@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 98208263
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a2852d0f36a81dc4f54adc3f3e92c491
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/src/tsproj/js/Game/GameTools.mjs
+- Assets/src/tsproj/js/Main.mjs
+- Assets/src/tsproj/js/Game/JsBehaviour.mjs
+Dependencies: []

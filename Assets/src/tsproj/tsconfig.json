@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "ES2015",
+    "jsx": "react",
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "typeRoots": [
+      "../../../package/Typing",
+      "../../Gen/Typing",
+      "./node_modules/@types"
+    ],
+    "rootDir": "./ts/",
+    "outDir": "./js/"
+  }
+}
