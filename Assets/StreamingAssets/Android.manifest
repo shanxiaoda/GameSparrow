@@ -1,0 +1,7 @@
+ManifestFileVersion: 0
+CRC: 267146112
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: myab2
+      Dependencies: {}
