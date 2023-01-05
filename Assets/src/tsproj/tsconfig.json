@@ -6,9 +6,8 @@
     "sourceMap": false,
     "noImplicitAny": true,
     "typeRoots": [
-      "../../../package/Typing",
       "../../Gen/Typing",
-      "./node_modules/@types"
+      "../../Puerts/Typing"
     ],
     "rootDir": "./ts/",
     "outDir": "./js/"

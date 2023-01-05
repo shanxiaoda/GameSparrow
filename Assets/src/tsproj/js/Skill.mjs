@@ -14,6 +14,11 @@ export default class Skill extends JsBehaviour {
     }
     OnEnable() {
         console.log("OnEnable");
+        let go = null;
+        // go.transform;
+        // CS.System.type
+        // puerts.evalScript
+        console.log(puerts.$typeof(CS.UnityEngine.GameObject));
     }
     OnDisable() {
         console.log("OnDisable");

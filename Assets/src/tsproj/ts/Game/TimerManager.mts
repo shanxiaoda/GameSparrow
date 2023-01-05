@@ -35,7 +35,8 @@ export default class TimerManager {
         
     }
 }
-
+/**
+ * 
 class Timer {
     constructor(autoActive = true) {
         this.scale = 1;
@@ -235,3 +236,5 @@ class TimerHandler {
         args ? method.apply(caller, args) : method.call(caller);
     }
 }
+
+ */
