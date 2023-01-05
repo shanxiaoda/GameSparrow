@@ -72,3 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 Assets/src/tsproj/js/
+
+Assets/StreamingAssets/build_info

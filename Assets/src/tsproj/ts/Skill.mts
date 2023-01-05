@@ -3,7 +3,7 @@ import JsBehaviour from "./Game/JsBehaviour.mjs";
 export default class Skill extends JsBehaviour {
     constructor() {
         super();
-        console.log("new skill aaaa");
+        console.log("new skill aaaa bbb");
     }
 
     // public Awake(): void {
