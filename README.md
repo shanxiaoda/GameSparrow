@@ -1,5 +1,5 @@
-# Sparrow  
-### Unity Puerts 框架  
+# GameSparrow  
+### Unity Game Puerts 框架  
 就像他的名字一样 麻雀 小巧玲珑 五脏俱全  
 本框架特点有  
 全局只有一组 Update,FixedUpdate,LateUpdate 极大的提高性能  
