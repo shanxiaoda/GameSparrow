@@ -11,7 +11,21 @@ public class CSMonoBehaviour : MonoBehaviour
     public string jsScript;
     void Awake()
     {
-        JSObject jSObject = App.jsEnvManager.jsEnv.ExecuteModule<JSObject>(this.jsScript, "default");
+        string scriptName;
+        if (this.jsScript.EndsWith(".mjs"))
+        {
+            scriptName = this.jsScript;
+        }
+        else if (this.jsScript.EndsWith(".mts"))
+        {
+            scriptName = this.jsScript.Replace(".mts", ".mjs");
+        }
+        else
+        {
+            scriptName = this.jsScript + ".mjs";
+        }
+
+        JSObject jSObject = App.jsEnvManager.jsEnv.ExecuteModule<JSObject>(scriptName, "default");
         Action<JSObject, CSMonoBehaviour> action = App.jsEnvManager.jsEnv.ExecuteModule<Action<JSObject, CSMonoBehaviour>>("Game/BehaviourManager.mjs", "CreateJsBehaviour");
         action(jSObject, this);
         GameUtils.RunAction(AwakeAction);

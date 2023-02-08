@@ -12,8 +12,8 @@ export default class Skill extends JsBehaviour {
 
     public Update(): void {
         // console.log("skill update");
-        let v3 = CS.UnityEngine.Vector3.op_Multiply(CS.UnityEngine.Vector3.one, 0.7);
-        this.gameObject.transform.Rotate(v3);
+        let v3 = CS.UnityEngine.Vector3.op_Multiply(CS.UnityEngine.Vector3.one, 0.1);
+        // this.gameObject.transform.Rotate(v3);
     }
 
     public OnEnable(): void {
