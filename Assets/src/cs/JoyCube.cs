@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class JoyCube : MonoBehaviour
 {
@@ -19,6 +21,14 @@ public class JoyCube : MonoBehaviour
 
     public static Lean.Touch.LeanFingerFilter Use = new Lean.Touch.LeanFingerFilter(true);
     // public UnityEngine.Transform t;
+
+    public CinemachineFreeLook.Orbit[] orbitList = null;
+
+    private void Start()
+    {
+        this.orbitList = (CinemachineFreeLook.Orbit[])this.freeLook.m_Orbits.Clone();
+    }
+
     void Update()
     {
         // freeLook.
@@ -33,72 +43,38 @@ public class JoyCube : MonoBehaviour
 
         // Debug.Log(this.freeLook.m_Lens.FieldOfView  );
         Cinemachine.CinemachineFreeLook.Orbit o = this.freeLook.m_Orbits[1];
-        o.m_Radius *= Lean.Touch.LeanGesture.GetPinchScale(fingers);
-        // this.freeLook.m_Orbits[1] = o;
+        float scale = Lean.Touch.LeanGesture.GetPinchScale(fingers);
+        if (scale != 1)
+        {
+            scale = 2 - scale;
+            for (int i = 0; i < this.freeLook.m_Orbits.Length; i++)
+            {
+                var now = this.freeLook.m_Orbits[i];
+                var old = this.orbitList[i];
+                float newScale = now.m_Radius * scale;
+                newScale = Math.Min(newScale, old.m_Radius * 2);
+                newScale = Math.Max(newScale, old.m_Radius * 0.5f);
+                Cinemachine.CinemachineFreeLook.Orbit o1 = new Cinemachine.CinemachineFreeLook.Orbit(old.m_Height, newScale);
+                this.freeLook.m_Orbits[i] = o1;
+            }
+        }
 
-        Cinemachine.CinemachineFreeLook.Orbit o1 = new Cinemachine.CinemachineFreeLook.Orbit(o.m_Height, o.m_Radius);
-        this.freeLook.m_Orbits[1] = o1;
-
-       
-
-        // Debug.Log(this.freeLook.m_Orbits[0]);
-
-        // this.freeLook.UpdateInputAxisProvider();
-
-        // Vector3 v = new Vector3(this.joystick.Horizontal, 0, this.joystick.Vertical);
-        // transform.LookAt(transform.position + v);
         v.x = this.joystick.Horizontal;
         v.z = this.joystick.Vertical;
         if (v.x == 0 && v.z == 0)
         {
-            // this.animator.SetInteger("runint", 0);
-            // this.animator.SetFloat("runfloat", 0.0f);
-            // this.animator.SetTrigger("stop");
-            // Debug.Log("aaaaaaaaaaa22222222222222222");
-            // Debug.Log("stop");
-
             this.animator.SetFloat("runfloat", 0.0f);
             return;
         }
         else
         {
-            // Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).IsName("Ellen_Run_Forward"));
-            // Debug.Log("aaaaaaaaaaa");
-            // if (this.animator.GetInteger("runint") == 0)
-            // {
-            // this.animator.SetTrigger("run");
-            // this.animator.SetInteger("runint", 1);
-            // this.animator.SetFloat("runfloat", 1.0f);
-            // Debug.Log("aaaaaaaaaaa");
-            // }
             this.animator.SetFloat("runfloat", 0.2f);
-            // Debug.Log("run");
         }
-        // Debug.Log( v.x );
-
-        // this.t = Transform.Instantiate();
-
-        // transform.LookAt(transform.position + v);
-
-        // transform.LookAt(joystick.Direction);
-
-        // transform.position += v * speed * Time.deltaTime;
         Vector3 startV3 = new Vector3(this.freeLook.transform.position.x, 0, this.freeLook.transform.position.z);
         Vector3 endV3 = new Vector3(this.transform.position.x, 0, this.transform.position.z);
-
         Vector3 n = (endV3 - startV3).normalized;
-
-        // this.t.position.x = this.freeLook.transform.position.x;
-        // this.t.position = this.transform.position;
-
-        //  this.freeLook.transform.forward = n;
-        // this.tempgo.transform.position = this.transform.position;
-        // this.tempgo.transform.forward = n;
-
-
         this.transform.forward = n;
         v = v.normalized;
-
         Vector3 v3 = this.transform.forward * v.z + this.transform.right * v.x;
 
         // Vector3 v3 = this.tempgo.transform.forward * v.z + this.tempgo.transform.right * v.x;
