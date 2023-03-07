@@ -27,6 +27,7 @@ public class JoyCube : MonoBehaviour
     private void Start()
     {
         this.orbitList = (CinemachineFreeLook.Orbit[])this.freeLook.m_Orbits.Clone();
+        this.transform.localEulerAngles = Vector3.zero;
     }
 
     void Update()

@@ -13,6 +13,7 @@ public class Tsc
         list.Add(root[0] + ":");//切换盘符
         list.Add("cd " + path);//
         list.Add("tsc");
+        // list.Add("npx swc ./ts -d js --config-file config.swcrc");
         string cmd = string.Join(" && ", list);
         UnityEngine.Debug.Log("命令是:" + cmd);
         Process p = new Process();
