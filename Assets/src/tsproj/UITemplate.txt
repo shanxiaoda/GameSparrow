@@ -1,0 +1,4 @@
+{import}
+export default class {className} extends JsBehaviour {
+{attribute}
+}

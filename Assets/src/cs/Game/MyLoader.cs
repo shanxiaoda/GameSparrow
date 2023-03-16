@@ -25,12 +25,9 @@ public class MyLoader : ILoader, IModuleChecker
         debugpath = filepath;
         if (filepath.StartsWith("puerts/"))
         {
-            var textAsset = Resources.Load<UnityEngine.TextAsset>(filepath.Replace(".mjs", ""));
-            if (textAsset != null)
-            {
-                // Debug.Log("读的Resources里的:" + filepath);
-                return textAsset.text;
-            }
+            filepath = filepath.Replace(Path.GetExtension(filepath), "");
+            var textAsset = Resources.Load<UnityEngine.TextAsset>(filepath);
+            return textAsset ? textAsset.text : "";
         }
         if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {

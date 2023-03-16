@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "ES2015",
     "jsx": "react",
-    "sourceMap": false,
+    "sourceMap": true,
     "noImplicitAny": true,
     "typeRoots": [
       "../../Gen/Typing",

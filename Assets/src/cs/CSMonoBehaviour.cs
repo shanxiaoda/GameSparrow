@@ -1,14 +1,14 @@
 using UnityEngine;
 using Puerts;
 using System;
-public class CSMonoBehaviour : MonoBehaviour
+public class CSMonoBehaviour : TSProperties
 {
     public Action AwakeAction;
     public Action StartAction;
     public Action OnDestroyAction;
     public Action OnDisableAction;
     public Action OnEnableAction;
-    public string jsScript;
+
     void Awake()
     {
         string scriptName;

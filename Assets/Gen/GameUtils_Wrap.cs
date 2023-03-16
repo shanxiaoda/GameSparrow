@@ -26,48 +26,6 @@ namespace PuertsStaticWrap
 
     // ==================== methods start ====================
 
-        [Puerts.MonoPInvokeCallback(typeof(Puerts.V8FunctionCallback))]
-        private static void F_IsNull(IntPtr isolate, IntPtr info, IntPtr self, int paramLen, long data)
-        {
-            try
-            {
-                
-        
-        
-                {
-            
-                
-                    IntPtr v8Value0 = PuertsDLL.GetArgumentValue(info, 0);
-                    object argobj0 = null;
-                    JsValueType argType0 = JsValueType.Invalid;
-                
-                
-                    
-                    {
-                    
-                        argobj0 = argobj0 != null ? argobj0 : StaticTranslate<UnityEngine.Object>.Get((int)data, isolate, NativeValueApi.GetValueFromArgument, v8Value0, false); UnityEngine.Object arg0 = (UnityEngine.Object)argobj0;
-                    
-
-                        var result = GameUtils.IsNull (arg0);
-
-                    
-                        
-                    
-                        Puerts.PuertsDLL.ReturnBoolean(isolate, info, result);
-                        
-                        
-                    }
-                
-                }
-            
-        
-            }
-            catch (Exception e)
-            {
-                Puerts.PuertsDLL.ThrowException(isolate, "c# exception:" + e.Message + ",stack:" + e.StackTrace);
-            }
-        }
-    
     // ==================== methods end ====================
 
     // ==================== properties start ====================
@@ -92,7 +50,6 @@ namespace PuertsStaticWrap
                 Constructor = Constructor,
                 Methods = new System.Collections.Generic.Dictionary<Puerts.MethodKey, Puerts.V8FunctionCallback>()
                 {   
-                    { new Puerts.MethodKey { Name = "IsNull", IsStatic = true}, F_IsNull }
                 },
                 Properties = new System.Collections.Generic.Dictionary<string, Puerts.PropertyRegisterInfo>()
                 {
@@ -100,6 +57,8 @@ namespace PuertsStaticWrap
                 },
                 LazyMembers = new System.Collections.Generic.List<Puerts.LazyMemberRegisterInfo>()
                 {   
+                    new Puerts.LazyMemberRegisterInfo() { Name = "IsNull", IsStatic = true, Type = (Puerts.LazyMemberType)2, HasGetter = false, HasSetter = false },
+                    new Puerts.LazyMemberRegisterInfo() { Name = "RunAction", IsStatic = true, Type = (Puerts.LazyMemberType)2, HasGetter = false, HasSetter = false }
                 }
             };
         }

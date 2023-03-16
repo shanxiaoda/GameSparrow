@@ -2,6 +2,7 @@ import App from "../App.mjs";
 import { BehaviourFunName } from "./ActionUtils.mjs";
 import { Utils } from "./GameTools.mjs";
 
+
 /**
  * update等可以随时开关
  */
@@ -98,6 +99,13 @@ export default class JsBehaviour {
         }
         if (haveUpdate || Utils.haveFun(this, BehaviourFunName.OnDisable)) {
             csMonoBehaviour.OnDisableAction = Utils.handlerByMethodName(this, "_" + BehaviourFunName.OnDisable);
+        }
+
+        let pList: CS.System.Array$1<CS.TSProperties.ResultPair> = csMonoBehaviour.Pairs;
+        for (let i = 0; i < pList.Length; i++) {
+            let p: CS.TSProperties.ResultPair = pList.get_Item(i);
+            let thisObj: any = this;
+            thisObj[p.key] = p.value;
         }
     }
 }

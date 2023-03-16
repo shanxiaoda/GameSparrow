@@ -8,6 +8,7 @@ public class Main
     [RuntimeInitializeOnLoadMethod]
     public static void init()
     {
+        App.jsEnvManager.jsEnv.ExecuteModule<Action>("Main.mjs", "Init")();
         //这里是框架使用者自定义的地方
         Action<InitParam> action = App.jsEnvManager.jsEnv.ExecuteModule<Action<InitParam>>("Game/ActionUtils.mjs", "setUpdateAction");
         action(initParam);
